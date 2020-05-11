@@ -1,11 +1,13 @@
-import { post, deletePost, updatePost } from './postActions';
+import { addPost, ADD_POST, deletePost, DELETE_POST, updatePost, UPDATE_POST } from './postActions';
 
 describe('blog posts', () => {
   it('creates a blog post', () => {
-    const action = post('Dear Diary', 'Today I walked dog.');
+    const action = addPost({
+      title: 'Dear Diary', 
+      body: 'Today I walked dog.' });
 
     expect(action).toEqual({
-      type: 'ADD-POST',
+      type: ADD_POST,
       payload: {
         title: 'Dear Diary',
         body: 'Today I walked dog.'
@@ -13,27 +15,29 @@ describe('blog posts', () => {
     });
   });
   it('deletes a blog post', () => {
-    const deletedPost = deletePost('crappy title that I hate');
+    const deletedPost = deletePost(0);
 
     expect(deletedPost).toEqual({
-      type: 'DELETE-POST',
-      payload: {
-        title: 'crappy title that I hate',
-      }
+      type: DELETE_POST,
+      payload: 0
     });
   });
 
   it('creates and update for blog', () => {
-    const action = updatePost ({
+    const action = updatePost (1, {
       title: 'New Adventure',
       body: 'almost died, but it was cool'
     });
 
     expect(action).toEqual({
-      type: 'UPDATE-POST',
+      type: UPDATE_POST,
       payload: {
-        title: 'New Adventure',
-        body: 'almost died, but it was cool'
+        index: 1,
+        entry: {
+          title: 'New Adventure',
+          body: 'almost died, but it was cool'
+
+        }
       }
     });
   });

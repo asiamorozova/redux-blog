@@ -1,22 +1,22 @@
-export const post = (title, body) => ({
-  type: 'ADD-POST',
-  payload: {
-    title, 
-    body
-  }
+
+export const ADD_POST = 'ADD_POST';
+export const addPost = entry => ({
+  type: 'ADD_POST',
+  payload: entry
 });
 
-export const deletePost = title => ({
-  type: 'DELETE-POST',
-  payload: {
-    title
-  }
+export const DELETE_POST = 'DELETE_POST';
+export const deletePost = index => ({
+  type: 'DELETE_POST',
+  payload: 
+    index
 });
 
-export const updatePost = ({ title, body }) => ({
-  type: 'UPDATE-POST',
+export const UPDATE_POST = 'UPDATE_POST';
+export const updatePost = (index, entry) => ({
+  type: 'UPDATE_POST',
   payload: { 
-    title,
-    body 
+    index,
+    entry
   }
 });
