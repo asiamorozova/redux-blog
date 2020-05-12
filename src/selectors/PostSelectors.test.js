@@ -14,5 +14,26 @@ describe('blog post selectors', () => {
       body: 'first body'
     }]);
   });
+  it('gets blog post by index', () => {
+    const state = [{
+      title: 'first title',
+      body: 'first body'
+    },
+    {
+      title: 'second title',
+      body: 'second body'
+    },
+    {
+      title: 'third title',
+      body: 'third body'
+    }];
 
+    const post = postsByIndex(state, 0);
+
+    expect(post).toEqual({
+      title: 'first title',
+      body: 'first body'
+    });
+  });
 });
+
